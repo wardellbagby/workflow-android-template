@@ -37,9 +37,11 @@ class MainWorkflow
   ): Any {
 
     return when (renderState) {
-      is ViewingComposeScreen -> ComposeScreen(onClick = context.eventHandler {
-        state = ViewingViewScreen
-      })
+      is ViewingComposeScreen -> ComposeScreen(
+        onClick = context.eventHandler {
+          state = ViewingViewScreen
+        }
+      )
       is ViewingViewScreen -> ViewScreen(
         onClick = context.eventHandler {
           state = ViewingComposeScreen

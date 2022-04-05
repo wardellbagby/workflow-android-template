@@ -26,9 +26,11 @@ class MainActivity : AppCompatActivity() {
     lifecycle.addObserver(activityProvider)
 
     val model: AppViewModel by viewModels()
-    setContentView(WorkflowLayout(this).apply {
-      start(lifecycle, model.renderings, viewRegistry)
-    })
+    setContentView(
+      WorkflowLayout(this).apply {
+        start(lifecycle, model.renderings, viewRegistry)
+      }
+    )
   }
 }
 

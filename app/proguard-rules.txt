@@ -1,3 +1,0 @@
--dontobfuscate
--dontobfuscate
--keep class com.wardellbagby.workflow_template.xposed.**

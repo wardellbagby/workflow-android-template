@@ -4,9 +4,29 @@ Workflow - Template Repo
 This repo contains all you need to get started with Square's Workflow library for Android
 development.
 
-Simply clone the repo, check it out locally, and run the app!
+You can [use this link](https://github.com/wardellbagby/workflow-template-app/generate) to generate your own repo on Github, or manually clone this repo yourself.
 
-Dependencies:
+## Things you likely want to read
+
+To enable the Ktlint Git Hook to check or format your code on commit, be sure to run one of the two below commands:
+```shell
+# Formats code on commit, failing commit if code cannot be formatted.
+./gradlew addKtlintFormatGitPreCommitHook
+```
+
+```shell
+# Checks code on commit, failing commit if code fails Ktlint check.
+./gradlew addKtlintCheckGitPreCommitHook
+```
+
+You may also want to run the follow to get IDEA (or Android Studio) to use the Ktlint code style:
+
+```
+# Generates IDEA / Android Studio code styles in the current folder's .idea subdirectory.
+./gradlew ktlintApplyToIdea
+```
+
+## Project Dependencies
 
 - Workflow - 1.6.0 (with Compose support)
 - Kotlin - 1.6.10

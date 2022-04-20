@@ -28,7 +28,7 @@ You may also want to run the follow to get IDEA (or Android Studio) to use the K
 
 ## Project Dependencies
 
-- Workflow - 1.6.0 (with Compose support)
+- Workflow - 1.7.0 (with Compose support)
 - Kotlin - 1.6.10
 - Jetpack Compose (with Material Design) - 1.1.1
 - ConstraintLayout - 2.1.3

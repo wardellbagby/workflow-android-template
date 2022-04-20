@@ -45,6 +45,7 @@ class AppViewModel
       workflow = workflow,
       scope = viewModelScope,
       prop = Unit,
-      savedStateHandle = savedState
+      savedStateHandle = savedState,
+      interceptors = listOf(DebugWorkflowLoggingInterceptor)
     )
 }

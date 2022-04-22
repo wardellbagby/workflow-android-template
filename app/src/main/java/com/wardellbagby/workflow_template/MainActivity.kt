@@ -13,8 +13,6 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.StateFlow
 import javax.inject.Inject
 
-private val viewRegistry = MainViewRegistry
-
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
   @Inject
@@ -28,7 +26,10 @@ class MainActivity : AppCompatActivity() {
     val model: AppViewModel by viewModels()
     setContentView(
       WorkflowLayout(this).apply {
-        start(lifecycle, model.renderings, viewRegistry)
+        start(
+          lifecycle = lifecycle,
+          renderings = model.renderings
+        )
       }
     )
   }

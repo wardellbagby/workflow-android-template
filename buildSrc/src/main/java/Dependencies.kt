@@ -1,3 +1,5 @@
+// Android Studio doesn't know that changes in this file changes dependencies, so make sure to do
+// a manual Gradle sync after changing something here!
 object Dependencies {
   const val kotlinComposeCompilerVersion = "1.1.1"
 
@@ -11,7 +13,7 @@ object Dependencies {
   private const val appcompatVersion = "1.4.1"
   private const val activityKtxVersion = "1.4.0"
   private const val materialViewsVersion = "1.5.0"
-  private const val materialComposeVersion = "1.1.1"
+  private const val materialComposeVersion = "1.0.0-alpha10"
   private const val lifecycleViewModelVersion = "2.4.1"
   private const val constraintLayoutVersion = "2.1.3"
 
@@ -34,7 +36,7 @@ object Dependencies {
   const val LifecycleViewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleViewModelVersion"
   const val ActivityKtx = "androidx.activity:activity-ktx:$activityKtxVersion"
   const val MaterialViews = "com.google.android.material:material:$materialViewsVersion"
-  const val MaterialCompose = "androidx.compose.material:material:$materialComposeVersion"
+  const val MaterialCompose = "androidx.compose.material3:material3:$materialComposeVersion"
 
   const val WorkflowUiCoreAndroid = "com.squareup.workflow1:workflow-ui-core-android:$workflowVersion"
   const val WorkflowTracing = "com.squareup.workflow1:workflow-tracing:$workflowVersion"

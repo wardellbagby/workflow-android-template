@@ -17,7 +17,8 @@ import com.wardellbagby.workflow_template.theming.AppTheme
 // These screens are left here as an example; real screens should be self-contained in their own
 // files, named based on the feature they are for, and scoped to the same package as their Workflow.
 // MainWorkflow likely shouldn't render any screens directly either; just delegate to other
-// Workflows.
+// Workflows. Use these screens as guidelines (minus the hard-coded strings; use string resources!)
+// but delete them once there's not needed!
 
 data class ComposeScreen(
   val onClick: () -> Unit

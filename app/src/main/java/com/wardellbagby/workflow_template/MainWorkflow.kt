@@ -11,6 +11,14 @@ import com.wardellbagby.workflow_template.MainWorkflow.State.ViewingViewScreen
 import kotlinx.parcelize.Parcelize
 import javax.inject.Inject
 
+/**
+ * The root Workflow that this app runs.
+ *
+ * The state that this Workflow uses can be thought of as the app's state. All of your major screen
+ * transitions should happen here. For instance, if your app would have a settings screen, there
+ * should likely be a new `ViewingSettings` state added here that will run a new `SettingsWorkflow`
+ * that you'd handle.
+ */
 class MainWorkflow
 @Inject constructor() : StatefulWorkflow<Unit, State, Nothing, Any>() {
 

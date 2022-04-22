@@ -10,6 +10,12 @@ import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
 
+/**
+ * The root theme used by Workflow screens that render using Compose.
+ *
+ * Will use dynamic colors on Android S and higher, and falls back to the Material3 default colors
+ * when dynamic color aren't available.
+ */
 @Composable
 fun AppTheme(
   useDarkTheme: Boolean = isSystemInDarkTheme(),

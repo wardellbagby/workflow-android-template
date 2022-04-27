@@ -17,7 +17,7 @@ object Dependencies {
   private const val lifecycleViewModelVersion = "2.4.1"
   private const val constraintLayoutVersion = "2.1.3"
 
-  private const val workflowVersion = "1.7.0"
+  private const val workflowVersion = "1.7.1"
   private const val cyclerVersion = "0.1.4"
 
   const val AndroidGradlePlugin = "com.android.tools.build:gradle:$agpVersion"

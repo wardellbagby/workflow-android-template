@@ -46,7 +46,9 @@ data class ViewScreen(
   val onClick: () -> Unit
 ) : AndroidViewRendering<ViewScreen> {
   override val viewFactory =
-    BuilderViewFactory(type = ViewScreen::class) { initialRendering, initialViewEnvironment, contextForNewView, container ->
+    BuilderViewFactory(
+      type = ViewScreen::class
+    ) { initialRendering, initialViewEnvironment, contextForNewView, _ ->
       val button = MaterialButton(contextForNewView).apply {
         text = "Hello from View-land!"
       }

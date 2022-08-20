@@ -14,13 +14,13 @@ repositories {
 }
 
 android {
-  compileSdk = 32
-  buildToolsVersion = "32.0.0"
+  compileSdk = 33
+  buildToolsVersion = "33.0.0"
 
   defaultConfig {
     applicationId = "com.wardellbagby.workflow_template"
     minSdk = 21
-    targetSdk = 32
+    targetSdk = 33
   }
 
   buildFeatures {

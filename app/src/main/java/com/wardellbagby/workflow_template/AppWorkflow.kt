@@ -3,13 +3,18 @@ package com.wardellbagby.workflow_template
 import android.os.Parcelable
 import com.squareup.workflow1.Snapshot
 import com.squareup.workflow1.StatefulWorkflow
+import com.squareup.workflow1.ui.Screen
+import com.squareup.workflow1.ui.container.BodyAndOverlaysScreen
+import com.squareup.workflow1.ui.container.Overlay
 import com.squareup.workflow1.ui.toParcelable
 import com.squareup.workflow1.ui.toSnapshot
-import com.wardellbagby.workflow_template.MainWorkflow.State
-import com.wardellbagby.workflow_template.MainWorkflow.State.ViewingComposeScreen
-import com.wardellbagby.workflow_template.MainWorkflow.State.ViewingViewScreen
+import com.wardellbagby.workflow_template.AppWorkflow.State
+import com.wardellbagby.workflow_template.AppWorkflow.State.ViewingComposeScreen
+import com.wardellbagby.workflow_template.AppWorkflow.State.ViewingViewScreen
 import kotlinx.parcelize.Parcelize
 import javax.inject.Inject
+
+typealias AppRendering = BodyAndOverlaysScreen<Screen, Overlay>
 
 /**
  * The root Workflow that this app runs.
@@ -19,8 +24,8 @@ import javax.inject.Inject
  * should likely be a new `ViewingSettings` state added here that will run a new `SettingsWorkflow`
  * that you'd handle.
  */
-class MainWorkflow
-@Inject constructor() : StatefulWorkflow<Unit, State, Nothing, Any>() {
+class AppWorkflow
+@Inject constructor() : StatefulWorkflow<Unit, State, Nothing, AppRendering>() {
 
   sealed class State : Parcelable {
     @Parcelize
@@ -39,20 +44,20 @@ class MainWorkflow
     renderProps: Unit,
     renderState: State,
     context: RenderContext
-  ): Any {
+  ): AppRendering {
 
     return when (renderState) {
-      is ViewingComposeScreen -> ComposeScreen(
+      is ViewingComposeScreen -> HelloComposeScreen(
         onClick = context.eventHandler {
           state = ViewingViewScreen
         }
       )
-      is ViewingViewScreen -> ViewScreen(
+      is ViewingViewScreen -> HelloViewScreen(
         onClick = context.eventHandler {
           state = ViewingComposeScreen
         }
       )
-    }
+    }.let { AppRendering(it) }
   }
 
   override fun snapshotState(state: State): Snapshot {

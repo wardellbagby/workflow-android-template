@@ -1,13 +1,19 @@
 package com.wardellbagby.workflow_template
 
 import android.os.Bundle
+import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.squareup.workflow1.ui.WorkflowLayout
+import com.squareup.workflow1.ui.Screen
+import com.squareup.workflow1.ui.ViewEnvironment
+import com.squareup.workflow1.ui.compose.WorkflowRendering
 import com.squareup.workflow1.ui.renderWorkflowIn
+import com.wardellbagby.workflow_template.theming.AppTheme
 import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.StateFlow
@@ -16,7 +22,7 @@ import javax.inject.Inject
 /**
  * The single Activity of this application. Its job is to host the single View Model of this app
  * that will host the singular root Workflow. If you're thinking of adding a new Activity, you
- * probably shouldn't. Instead, make changes to [MainWorkflow] to have a new state that renders a
+ * probably shouldn't. Instead, make changes to [AppWorkflow] to have a new state that renders a
  * new child Workflow instead.
  */
 @AndroidEntryPoint
@@ -33,14 +39,16 @@ class MainActivity : AppCompatActivity() {
     lifecycle.addObserver(activityProvider)
 
     val model: AppViewModel by viewModels()
-    setContentView(
-      WorkflowLayout(this).apply {
-        start(
-          lifecycle = lifecycle,
-          renderings = model.renderings
+
+    setContent {
+      val rendering by model.renderings.collectAsState()
+      AppTheme {
+        WorkflowRendering(
+          rendering = rendering,
+          viewEnvironment = ViewEnvironment.EMPTY
         )
       }
-    )
+    }
   }
 }
 
@@ -56,20 +64,19 @@ class MainActivity : AppCompatActivity() {
  *
  * Much of this is machinery that you only need a surface-level understanding of; it's unlikely this
  * will ever need any changes, as all new features should be Workflows themselves, and those
- * Workflows should be children of [MainWorkflow]. Due to that, those will all use the Workflow
+ * Workflows should be children of [AppWorkflow]. Due to that, those will all use the Workflow
  * machinery instead of View Models.
  */
 @HiltViewModel
 class AppViewModel
 @Inject constructor(
   savedState: SavedStateHandle,
-  workflow: MainWorkflow
+  workflow: AppWorkflow
 ) : ViewModel() {
-  val renderings: StateFlow<Any> =
+  val renderings: StateFlow<Screen> =
     renderWorkflowIn(
       workflow = workflow,
       scope = viewModelScope,
-      prop = Unit,
       savedStateHandle = savedState,
       interceptors = listOf(DebugWorkflowLoggingInterceptor)
     )

@@ -59,6 +59,7 @@ dependencies {
   implementation(Dependencies.Cycler)
   implementation(Dependencies.LifecycleViewModel)
   implementation(Dependencies.ActivityKtx)
+  implementation(Dependencies.ActivityCompose)
   implementation(Dependencies.MaterialViews)
   implementation(Dependencies.MaterialCompose)
 }

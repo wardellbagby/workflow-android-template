@@ -17,7 +17,7 @@ object Dependencies {
   private const val lifecycleViewModelVersion = "2.4.1"
   private const val constraintLayoutVersion = "2.1.3"
 
-  private const val workflowVersion = "1.7.1"
+  private const val workflowVersion = "1.8.0-beta09"
   private const val cyclerVersion = "0.1.4"
 
   const val AndroidGradlePlugin = "com.android.tools.build:gradle:$agpVersion"
@@ -35,6 +35,7 @@ object Dependencies {
   const val ConstraintLayout = "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
   const val LifecycleViewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleViewModelVersion"
   const val ActivityKtx = "androidx.activity:activity-ktx:$activityKtxVersion"
+  const val ActivityCompose = "androidx.activity:activity-compose:$activityKtxVersion"
   const val MaterialViews = "com.google.android.material:material:$materialViewsVersion"
   const val MaterialCompose = "androidx.compose.material3:material3:$materialComposeVersion"
 

@@ -14,6 +14,7 @@ import com.squareup.workflow1.ui.ScreenViewFactory
 import com.squareup.workflow1.ui.ScreenViewHolder
 import com.squareup.workflow1.ui.ViewEnvironment
 import com.squareup.workflow1.ui.compose.ComposeScreen
+import com.wardellbagby.workflow_template.databinding.HelloViewBinding
 
 // These screens are left here as an example; real screens should be self-contained in their own
 // files, named based on the feature they are for, and scoped to the same package as their Workflow.
@@ -54,5 +55,14 @@ data class HelloViewScreen(
       ScreenViewHolder(initialViewEnvironment, view) { rendering: HelloViewScreen, _ ->
         button.setOnClickListener { rendering.onClick() }
       }
+    }
+}
+
+data class HelloViewBindingScreen(
+  val onClick: () -> Unit
+) : AndroidScreen<HelloViewBindingScreen> {
+  override val viewFactory: ScreenViewFactory<HelloViewBindingScreen> =
+    ScreenViewFactory.fromViewBinding(HelloViewBinding::inflate) { rendering, _ ->
+      viewButton.setOnClickListener { rendering.onClick() }
     }
 }

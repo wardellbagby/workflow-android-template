@@ -10,6 +10,7 @@ import com.squareup.workflow1.ui.toParcelable
 import com.squareup.workflow1.ui.toSnapshot
 import com.wardellbagby.workflow_template.AppWorkflow.State
 import com.wardellbagby.workflow_template.AppWorkflow.State.ViewingComposeScreen
+import com.wardellbagby.workflow_template.AppWorkflow.State.ViewingViewBindingScreen
 import com.wardellbagby.workflow_template.AppWorkflow.State.ViewingViewScreen
 import kotlinx.parcelize.Parcelize
 import javax.inject.Inject
@@ -33,6 +34,9 @@ class AppWorkflow
 
     @Parcelize
     object ViewingViewScreen : State()
+
+    @Parcelize
+    object ViewingViewBindingScreen : State()
   }
 
   override fun initialState(
@@ -53,6 +57,11 @@ class AppWorkflow
         }
       )
       is ViewingViewScreen -> HelloViewScreen(
+        onClick = context.eventHandler {
+          state = ViewingViewBindingScreen
+        }
+      )
+      is ViewingViewBindingScreen -> HelloViewBindingScreen(
         onClick = context.eventHandler {
           state = ViewingComposeScreen
         }

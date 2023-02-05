@@ -9,8 +9,9 @@ your own repo on Github, or manually clone this repo yourself.
 
 ## What does this template even do?
 
-This shows two screens: one that uses Jetpack Compose and one that uses regular Android Views. Each
-screen has a single button that, when clicked, will transition to the other screen.
+This shows three screens: one that uses Jetpack Compose, one that uses regular Android Views, and
+one that uses Android ViewBinding. Each screen has a single button that, when clicked, will
+transition to the next screen in a loop.
 
 ## Things you likely want to read
 
@@ -53,9 +54,6 @@ You may also want to run the follow to get IDEA (or Android Studio) to use the K
 
 ## Project Dependencies
 
-- Workflow - 1.7.0 (with Compose support)
-- Kotlin - 1.6.10
-- Jetpack Compose (with Material Design 3) - 1.0.0-alpha10
-- ConstraintLayout - 2.1.3
-- Cycler - 0.1.4
-- Material Design 3 - 1.5.0
+- Workflow - 1.8.0-beta09 (with Compose support)
+- Kotlin - 1.7.10
+- Jetpack Compose - 1.4.0

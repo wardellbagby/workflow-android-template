@@ -1,24 +1,23 @@
 // Android Studio doesn't know that changes in this file changes dependencies, so make sure to do
 // a manual Gradle sync after changing something here!
 object Dependencies {
-  const val kotlinComposeCompilerVersion = "1.3.0"
+  const val kotlinComposeCompilerVersion = "1.4.0"
 
-  private const val kotlinVersion = "1.7.10"
-  private const val ktlintGradleVersion = "10.2.1"
-  private const val agpVersion = "7.2.2"
-  private const val hiltVersion = "2.43.1"
+  private const val kotlinVersion = "1.8.0"
+  private const val ktlintGradleVersion = "11.1.0"
+  private const val agpVersion = "7.4.1"
+  private const val hiltVersion = "2.44.2"
 
   // AndroidX
   private const val recyclerViewVersion = "1.2.1"
-  private const val appcompatVersion = "1.5.0"
-  private const val activityKtxVersion = "1.5.1"
-  private const val materialViewsVersion = "1.6.1"
-  private const val materialComposeVersion = "1.0.0-alpha16"
+  private const val appcompatVersion = "1.6.0"
+  private const val activityKtxVersion = "1.6.1"
+  private const val materialViewsVersion = "1.8.0"
+  private const val materialComposeVersion = "1.0.1"
   private const val lifecycleViewModelVersion = "2.5.1"
   private const val constraintLayoutVersion = "2.1.4"
 
-  private const val workflowVersion = "1.8.0-beta09"
-  private const val cyclerVersion = "0.1.4"
+  private const val workflowVersion = "1.8.0-beta13"
 
   const val AndroidGradlePlugin = "com.android.tools.build:gradle:$agpVersion"
   const val KotlinGradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
@@ -42,6 +41,4 @@ object Dependencies {
   const val WorkflowUiCoreAndroid = "com.squareup.workflow1:workflow-ui-core-android:$workflowVersion"
   const val WorkflowTracing = "com.squareup.workflow1:workflow-tracing:$workflowVersion"
   const val WorkflowUiCompose = "com.squareup.workflow1:workflow-ui-compose:$workflowVersion"
-
-  const val Cycler = "com.squareup.cycler:cycler:$cyclerVersion"
 }

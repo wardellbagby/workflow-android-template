@@ -57,7 +57,6 @@ dependencies {
   implementation(Dependencies.WorkflowUiCoreAndroid)
   implementation(Dependencies.WorkflowTracing)
   implementation(Dependencies.WorkflowUiCompose)
-  implementation(Dependencies.Cycler)
   implementation(Dependencies.LifecycleViewModel)
   implementation(Dependencies.ActivityKtx)
   implementation(Dependencies.ActivityCompose)

@@ -18,7 +18,6 @@ import com.google.android.material.textview.MaterialTextView
 import com.squareup.workflow1.ui.AndroidScreen
 import com.squareup.workflow1.ui.ScreenViewFactory
 import com.squareup.workflow1.ui.ScreenViewHolder
-import com.squareup.workflow1.ui.ViewEnvironment
 import com.squareup.workflow1.ui.compose.ComposeScreen
 import com.wardellbagby.workflow_template.databinding.HelloViewBinding
 
@@ -34,7 +33,7 @@ data class HelloComposeScreen(
 ) : ComposeScreen {
   @OptIn(ExperimentalUnitApi::class)
   @Composable
-  override fun Content(viewEnvironment: ViewEnvironment) {
+  override fun Content() {
     Column(
       verticalArrangement = Arrangement.Center,
       horizontalAlignment = Alignment.CenterHorizontally

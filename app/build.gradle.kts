@@ -6,6 +6,7 @@ plugins {
   id("kotlin-kapt")
   id("kotlin-parcelize")
   id("dagger.hilt.android.plugin")
+  id("org.jetbrains.kotlin.plugin.compose") version Dependencies.kotlinVersion
 }
 
 repositories {
@@ -13,28 +14,30 @@ repositories {
   google()
 }
 
+kotlin {
+  jvmToolchain(11)
+}
+
 android {
-  compileSdk = 33
-  buildToolsVersion = "33.0.0"
+  compileSdk = 35
+  buildToolsVersion = "35.0.0"
+  namespace = "com.wardellbagby.workflow_template"
 
   defaultConfig {
     applicationId = "com.wardellbagby.workflow_template"
     minSdk = 21
-    targetSdk = 33
+    targetSdk = 35
   }
 
   buildFeatures {
     compose = true
     viewBinding = true
-  }
-
-  composeOptions {
-    kotlinCompilerExtensionVersion = Dependencies.kotlinComposeCompilerVersion
+    buildConfig = true
   }
 
   compileOptions {
-    sourceCompatibility = JavaVersion.VERSION_1_8
-    targetCompatibility = JavaVersion.VERSION_1_8
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
   }
 
   buildTypes {
@@ -50,10 +53,7 @@ dependencies {
   kapt(Dependencies.HiltCompiler)
   implementation(Dependencies.HiltAndroid)
 
-  implementation(Dependencies.KotlinStdlib)
-  implementation(Dependencies.RecyclerView)
   implementation(Dependencies.Appcompat)
-  implementation(Dependencies.ConstraintLayout)
   implementation(Dependencies.WorkflowUiCoreAndroid)
   implementation(Dependencies.WorkflowTracing)
   implementation(Dependencies.WorkflowUiCompose)
@@ -65,8 +65,7 @@ dependencies {
 }
 
 tasks.withType<KotlinCompile>().configureEach {
-  kotlinOptions {
-    freeCompilerArgs =
-      freeCompilerArgs + "-opt-in=com.squareup.workflow1.ui.WorkflowUiExperimentalApi"
+  compilerOptions {
+    optIn = listOf("com.squareup.workflow1.ui.WorkflowUiExperimentalApi")
   }
 }

@@ -4,14 +4,18 @@ import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.squareup.workflow1.ui.Screen
 import com.squareup.workflow1.ui.ViewEnvironment
+import com.squareup.workflow1.ui.compose.LocalWorkflowEnvironment
 import com.squareup.workflow1.ui.compose.WorkflowRendering
+import com.squareup.workflow1.ui.compose.withComposeInteropSupport
 import com.squareup.workflow1.ui.renderWorkflowIn
 import com.wardellbagby.workflow_template.theming.AppTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -43,10 +47,21 @@ class MainActivity : AppCompatActivity() {
     setContent {
       val rendering by model.renderings.collectAsState()
       AppTheme {
-        WorkflowRendering(
-          rendering = rendering,
-          viewEnvironment = ViewEnvironment.EMPTY
-        )
+        // ViewEnvironment is a map that our Workflow UI code will have access to. Mostly useful
+        // for storing UI concerns in it so that your Workflow doesn't have to worry about it. Think
+        // things like a date or currency formatter. Anything you add to the environment here will
+        // be available to ALL UI rendered by a Workflow, no matter where it is. You can also
+        // override what the environment is directly in a Workflow by using EnvironmentScreen. Not
+        // useful for this app, but useful to know overall.
+        val environment = remember {
+          // This bit here allows us to arbitrarily nest both Compose and View screens. Basically
+          // required for any Compose app, even if you aren't explicitly using Views since some of
+          // the Workflow built-in types are rendered using Views.
+          ViewEnvironment.EMPTY.withComposeInteropSupport()
+        }
+        CompositionLocalProvider(LocalWorkflowEnvironment provides environment) {
+          WorkflowRendering(rendering = rendering)
+        }
       }
     }
   }
@@ -54,9 +69,9 @@ class MainActivity : AppCompatActivity() {
 
 /**
  * The View Model that stores and runs the root Workflow. With how Workflows work, View Models
- * as a concept aren't needed as Workflows are effectively View Models themselves. In that Workflows
- * allow you to have a single source of state and to create a model from that state that can be used
- * by your view layer in order to render UI.
+ * as a concept aren't needed as Workflows are effectively View Models themselves. By that, I mean
+ * that Workflows allow you to have a single source of state and to create a model from that state
+ * that can be used by your view layer in order to render UI.
  *
  * However, we need a single View Model at the root level here in order to keep our Workflows
  * outside of the normal Android lifecycle. Therefore, we use a View Model to host the root

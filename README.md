@@ -54,6 +54,5 @@ You may also want to run the follow to get IDEA (or Android Studio) to use the K
 
 ## Project Dependencies
 
-- Workflow - 1.8.0-beta09 (with Compose support)
-- Kotlin - 1.7.10
-- Jetpack Compose - 1.4.0
+- Workflow - 1.12.1-beta12
+- Kotlin - 2.0.20
